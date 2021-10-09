@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { getUserToken } from '../utils/authToken'
 
 const NewRental = (props) => {
     const initialState = {
@@ -15,6 +16,7 @@ const NewRental = (props) => {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
+                    'Authorization': `bearer ${getUserToken()}`,
                     "Content-Type": "application/json"
                 }
             }
