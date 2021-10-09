@@ -28,7 +28,9 @@ const RentalDetails = (props) => {
                     <p>Address: <strong>{ rental.address }</strong></p>
                 </div>
             }
-            <Link to={'/renta'}>Back</Link>
+            <Link to='/renta'>Back</Link>
+            <br/>
+            <Link to={`/renta/${rental._id}/edit`}>Edit</Link>
         </>
     )
 }
