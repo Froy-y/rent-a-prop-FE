@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import NewRental from './components/NewRental';
+import RentalList from './components/RentalList';
+import EditRental from './components/EditRental';
+import RentalDetails from './components/RentalDetails';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hi</h1>
+      <Router>
+        <Switch>
+          <Route exact path ='/renta/new' render={(routerProps) => <NewRental {...routerProps} /> } />
+          <Route exact path ='/renta' render={(routerProps) => <RentalList {...routerProps} /> } />
+          <Route exact path ='/renta/:id/edit' render={(routerProps) => <EditRental {...routerProps} /> } />
+          <Route exact path ='/renta/:id' render={(routerProps) => <RentalDetails {...routerProps} /> } />
+        </Switch>
+      </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
