@@ -1,9 +1,9 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import NewRental from './components/NewRental';
-import RentalList from './components/RentalList';
-import EditRental from './components/EditRental';
-import RentalDetails from './components/RentalDetails';
+import NewRental from './components/PropertyPages/NewRental';
+import RentalList from './components/PropertyPages/RentalList';
+import EditRental from './components/PropertyPages/EditRental';
+import RentalDetails from './components/PropertyPages/RentalDetails';
 
 const App = () => {
   return (
