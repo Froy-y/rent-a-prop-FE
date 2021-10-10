@@ -1,21 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { getUserToken } from '../utils/authToken'
+import { useParams } from "react-router-dom"
 
 const RentalDetails = (props) => {
-    const currentId = props.match.params.id
     const [rental, setRental] = useState('')
     const [loading, setLoading] = useState(true)
+    const {userId} = useParams()
+    const {rentaId} = useParams()
 
     //fetch show
-    const getRental = async(id) => {
-        const foundRental = await fetch(`http://localhost:9000/renta/${id}`)
-        const parsed = await foundRental.json()
-        setRental(parsed)
-        setLoading(!loading)
+    const getRental = async(rentaId) => {
+        try {
+            const configs = {
+                method: "GET",
+                body: JSON.stringify(),
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `bearer ${getUserToken()}`,
+                }
+              }
+            const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${rentaId}`, configs)
+            const parsed = await foundRental.json()
+            setRental(parsed)
+            setLoading(!loading)
+        } catch (err) {
+            console.log(err)
+        }
+        
     }
 
     useEffect(() => {
-        getRental(currentId)
+        getRental(rentaId)
     }, [])
 
     return(

@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from "react-router-dom"
+import { getUserToken } from "../utils/authToken"
 
 const RentalList = (props) => {
     const [rental, setRental] = useState([])
+    const { userId } = useParams()
 
     //fetch for index
     const getRentals = async () => {
         try {
-            const allRentals = await fetch('http://localhost:9000/renta')
+            const configs = {
+                method: "GET",
+                body: JSON.stringify(),
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `bearer ${getUserToken()}`,
+                  }
+              }
+            const allRentals = await fetch(`http://localhost:9000/${userId}/renta`, configs)
             const parsed = await allRentals.json()
             setRental(parsed)
         } catch (err) {
@@ -19,12 +30,12 @@ const RentalList = (props) => {
         getRentals()
     }, [])
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (rentaId) => {
         try {
             const config = {
                 method: 'DELETE'
             }
-            const deleteRental = await fetch(`http://localhost:9000/renta/${id}`, config)
+            const deleteRental = await fetch(`http://localhost:9000/${userId}/renta/${rentaId}`, config)
             const parsed = await deleteRental.json()
             const updateRental = rental.filter(rentalProperty => rentalProperty._id !== parsed._id)
             setRental(updateRental)
@@ -54,7 +65,7 @@ const RentalList = (props) => {
                         )) }
                     </tbody>
                 </table>
-                <Link to="/renta/new">Create New Rental</Link>
+                <Link to={`/${userId}/renta/new`}>Create New Rental</Link>
                 <br/>
                 <Link to="/">Dismiss</Link>
             </div>

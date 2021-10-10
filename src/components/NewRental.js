@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getUserToken } from '../utils/authToken'
+import { useParams } from "react-router-dom"
 
 const NewRental = (props) => {
     const initialState = {
@@ -8,6 +9,7 @@ const NewRental = (props) => {
         address: ''
     }
     const [input, setInput] = useState(initialState)
+    const { userId } = useParams()
 
     //fetch for post
     const newRental = async (data) => {
@@ -16,14 +18,13 @@ const NewRental = (props) => {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
-                    'Authorization': `bearer ${getUserToken()}`,
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `bearer ${getUserToken()}`,
                 }
             }
-
-            const createdRental = await fetch('http://localhost:9000/renta', configs)
+            const createdRental = await fetch(`http://localhost:9000/${userId}/renta`, configs)
             const parsed = await createdRental.json()
-            props.history.push('/renta')
+            props.history.push(`/${userId}/renta`)
         } catch (err) {
             console.log(err)
         }
@@ -41,6 +42,7 @@ const NewRental = (props) => {
 
     return(
         <>
+        <h1>hello</h1>
             <div>
                 <form onSubmit={ handleSubmit }>
                     <label htmlFor="name">Name</label>

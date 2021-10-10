@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from "react-router-dom"
+import {getUserToken} from '../utils/authToken'
 
 const EditRental = (props) => {
     const initialState = {
@@ -8,11 +10,20 @@ const EditRental = (props) => {
     }
     const [input, setInput] = useState(initialState)
     const [loading, setLoading] = useState(true)
+    const {userId} = useParams()
+    const {rentaId} = useParams()
     
-    const getRental = async (id) => {
+    const getRental = async (rentaId) => {
         try {
-            const id = props.match.params.id
-            const foundRental = await fetch(`http://localhost:9000/renta/${id}`)
+            const configs = {
+                method: "GET",
+                body: JSON.stringify(),
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `bearer ${getUserToken()}`,
+                }
+            }
+            const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${rentaId}`, configs)
             const parsed = await foundRental.json()
             setInput(parsed)
             setLoading(false)
@@ -22,17 +33,18 @@ const EditRental = (props) => {
         }
     }
 
-    const updateRental = async (id, data) => {
+    const updateRental = async (rentaId, data) => {
         const configs = {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `bearer ${getUserToken()}`,
             },
         }
-        const updateRental = await fetch(`http://localhost:9000/renta/${id}`, configs)
+        const updateRental = await fetch(`http://localhost:9000/${userId}/renta/${rentaId}`, configs)
         const parsed = await updateRental.json()
-        props.history.push(`/renta/${id}`)
+        props.history.push(`/${userId}/renta/${rentaId}`)
     }
 
     useEffect(() =>{
@@ -70,7 +82,7 @@ const EditRental = (props) => {
                     </div>
                 </form>
             }
-            <Link to="/renta">Back</Link>
+            <Link to={`/${userId}/renta`}>Back</Link>
         </>
     )
 }
