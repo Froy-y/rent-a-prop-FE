@@ -8,6 +8,10 @@ const NewRental = (props) => {
     }
     const [input, setInput] = useState(initialState)
 
+    const handleChange = (e) => {
+        setInput({...input, [e.target.id]: e.target.value})
+    }
+
     //fetch for post
     const newRental = async (data) => {
         try {
@@ -18,17 +22,14 @@ const NewRental = (props) => {
                     "Content-Type": "application/json"
                 }
             }
-
-            const createdRental = await fetch('http://localhost:9000/renta', configs)
+            const createdRental = await fetch("http://localhost:9000/renta", configs)
+            console.log(createdRental)
             const parsed = await createdRental.json()
+            console.log(parsed)
             props.history.push('/renta')
         } catch (err) {
             console.log(err)
         }
-    }
-
-    const handleChange = (e) => {
-        setInput({...input, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = (e) => {

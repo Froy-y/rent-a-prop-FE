@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const RentalDetails = (props) => {
-    const currentId = props.match.params.id
+    const currentId = props.match.params.rId
     const [rental, setRental] = useState('')
     const [loading, setLoading] = useState(true)
 
     //fetch show
-    const getRental = async(id) => {
+    const getRental = async (id) => {
         const foundRental = await fetch(`http://localhost:9000/renta/${id}`)
         const parsed = await foundRental.json()
         setRental(parsed)
@@ -31,6 +31,8 @@ const RentalDetails = (props) => {
             <Link to='/renta'>Back</Link>
             <br/>
             <Link to={`/renta/${rental._id}/edit`}>Edit</Link>
+            <br/>
+            <Link to={`/renta/${rental._id}/tenant`}>View Tenants</Link>
         </>
     )
 }
