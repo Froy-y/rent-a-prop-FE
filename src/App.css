@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+/* carousel */
+.carousel-image {
+  width: 1500px;
+  height: 400px;
+  object-fit: cover;
+  object-position: middle;
+}
+
+body {
+  background-image: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm31-jj-21-d-metallic_2.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=08a66d060c8770ec9803442748020eb2');
+}
