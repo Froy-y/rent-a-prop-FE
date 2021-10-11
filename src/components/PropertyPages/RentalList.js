@@ -7,7 +7,7 @@ const RentalList = (props) => {
     //fetch for index
     const getRentals = async () => {
         try {
-            const allRentals = await fetch('http://localhost:9000/renta')
+            const allRentals = await fetch('https://git.heroku.com/lit-sands-33874.git/renta')
             const parsed = await allRentals.json()
             setRental(parsed)
         } catch (err) {
@@ -24,7 +24,7 @@ const RentalList = (props) => {
             const config = {
                 method: 'DELETE'
             }
-            const deleteRental = await fetch(`http://localhost:9000/renta/${id}`, config)
+            const deleteRental = await fetch(`https://git.heroku.com/lit-sands-33874.git/renta/${id}`, config)
             const parsed = await deleteRental.json()
             const updateRental = rental.filter(rentalProperty => rentalProperty._id !== parsed._id)
             setRental(updateRental)

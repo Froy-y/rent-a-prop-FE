@@ -19,7 +19,7 @@ const NewRental = (props) => {
                 }
             }
 
-            const createdRental = await fetch('http://localhost:9000/renta', configs)
+            const createdRental = await fetch('https://git.heroku.com/lit-sands-33874.git/renta', configs)
             const parsed = await createdRental.json()
             props.history.push('/renta')
         } catch (err) {
