@@ -19,6 +19,7 @@ const LoginForm = (props) => {
             }
             const newUser = await fetch('http://localhost:9000/auth/login', config)
             const parsed = await newUser.json()
+            console.log(parsed)
             setUserToken(parsed.token)
             setCurrentUser(parsed.user)
             setIsAuthenticated(parsed.isLoggedIn)

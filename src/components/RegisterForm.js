@@ -21,14 +21,14 @@ const RegisterForm = (props) => {
       }
       const newUser =  await fetch('http://localhost:9000/auth/register',configs)
       const parsedUser = await newUser.json()
-      console.log(parsedUser)
+      console.log("PARSED", parsedUser)
       setUserToken(parsedUser.token)
       setCurrentUser(parsedUser.user)
       setIsAuthenticated(parsedUser.isLoggedIn)
       return parsedUser 
 
     } catch(err){
-      console.log(err)
+      console.log("parsed a no go", err)
       clearUserToken()
       setIsAuthenticated(false)
     }
