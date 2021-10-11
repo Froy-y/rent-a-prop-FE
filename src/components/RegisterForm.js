@@ -38,6 +38,7 @@ const RegisterForm = (props) => {
       e.preventDefault()
       if (input.password === input.password2) {
         const createdUserToken = await registerUser(input)
+        console.log(createdUserToken)
         if (createdUserToken) {
           const user_id = createdUserToken.user._id
           props.history.push(`/${user_id}/renta`)
