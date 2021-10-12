@@ -50,8 +50,8 @@ const TenantList = (props) => {
                     <tbody>
                         {tenant && tenant.map(person => (
                             <tr key={ person._id }>
-                                <td>{ person._id }</td>
-                                <td>{ person.__v }</td>
+                                <td>{ person.name }</td>
+                                <td>{ person.age }</td>
                                 <td onClick={() => handleDelete(person._id)}>X</td>
                                 <td><Link to={`/renta/${rId}/tenant/${person._id}`}>Show</Link></td>
                             </tr>
