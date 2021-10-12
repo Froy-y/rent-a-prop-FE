@@ -11,6 +11,7 @@ import TenantList from './components/Tenants/TenantList';
 import EditTenant from './components/Tenants/EditTenant';
 import TenantDetails from './components/Tenants/TenantDetails';
 
+
 const App = () => {
   return (
     <div className="App">
