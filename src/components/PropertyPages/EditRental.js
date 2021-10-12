@@ -11,7 +11,7 @@ const EditRental = (props) => {
     
     const getRental = async (id) => {
         try {
-            const id = props.match.params.id
+            const id = props.match.params.rId
             const foundRental = await fetch(`http://localhost:9000/renta/${id}`)
             const parsed = await foundRental.json()
             setInput(parsed)

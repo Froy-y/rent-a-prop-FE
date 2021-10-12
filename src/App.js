@@ -42,8 +42,13 @@ const App = () => {
         <Switch>
           <Route exact path ='/renta/new' render={(routerProps) => <NewRental {...routerProps} /> } />
           <Route exact path ='/renta' render={(routerProps) => <RentalList {...routerProps} /> } />
-          <Route exact path ='/renta/:id/edit' render={(routerProps) => <EditRental {...routerProps} /> } />
-          <Route exact path ='/renta/:id' render={(routerProps) => <RentalDetails {...routerProps} /> } />
+          <Route exact path ='/renta/:rId/edit' render={(routerProps) => <EditRental {...routerProps} /> } />
+          <Route exact path ='/renta/:rId' render={(routerProps) => <RentalDetails {...routerProps} /> } />
+
+          <Route exact path ='/renta/:rId/tenant/new' render={(routerProps) => <NewTenant {...routerProps} /> } />
+          <Route exact path ='/renta/:rId/tenant' render={(routerProps) => <TenantList {...routerProps} /> } />
+          <Route exact path ='/renta/:rId/tenant/:tId/edit' render={(routerProps) => <EditTenant {...routerProps} /> } />
+          <Route exact path ='/renta/:rId/tenant/:tId' render={(routerProps) => <TenantDetails {...routerProps} /> } />
         </Switch>
       </Router>
     </div>

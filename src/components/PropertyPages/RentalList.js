@@ -9,6 +9,7 @@ const RentalList = (props) => {
         try {
             const allRentals = await fetch('http://localhost:9000/renta')
             const parsed = await allRentals.json()
+            console.log(parsed)
             setRental(parsed)
         } catch (err) {
             console.log(err)

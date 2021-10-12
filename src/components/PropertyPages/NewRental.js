@@ -9,7 +9,7 @@ const NewRental = (props) => {
     const [input, setInput] = useState(initialState)
 
     const handleChange = (e) => {
-        setInput({...input, [e.target.name]: e.target.value})
+        setInput({...input, [e.target.id]: e.target.value})
     }
 
     //fetch for post
