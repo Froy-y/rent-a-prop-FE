@@ -10,6 +10,7 @@ const RentalList = (props) => {
     //fetch for index
     const getRentals = async () => {
         try {
+            console.log(getUserToken())
             const configs = {
                 method: "GET",
                 body: JSON.stringify(),
@@ -35,7 +36,10 @@ const RentalList = (props) => {
     const handleDelete = async (rentaId) => {
         try {
             const config = {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    "Authorization": `bearer ${getUserToken()}`
+                }
             }
             const deleteRental = await fetch(`http://localhost:9000/${userId}/renta/${rentaId}`, config)
             const parsed = await deleteRental.json()
