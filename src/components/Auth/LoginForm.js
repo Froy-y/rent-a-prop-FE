@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { setUserToken, clearUserToken } from '../utils/authToken'
+import { setUserToken, clearUserToken } from '../../utils/authToken'
 import { Link } from 'react-router-dom'
 
 const LoginForm = (props) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { getUserToken } from "../utils/authToken";
-import { setUserToken, clearUserToken } from "../utils/authToken"
+import { getUserToken } from "../../utils/authToken";
+import { setUserToken, clearUserToken } from "../../utils/authToken"
 import { Link } from 'react-router-dom'
 
 const RegisterForm = (props) => {

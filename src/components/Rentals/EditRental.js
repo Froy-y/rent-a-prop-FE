@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from "react-router-dom"
-import {getUserToken} from '../utils/authToken'
+import {getUserToken} from '../../utils/authToken'
 
 const EditRental = (props) => {
     const initialState = {
@@ -11,9 +11,9 @@ const EditRental = (props) => {
     const [input, setInput] = useState(initialState)
     const [loading, setLoading] = useState(true)
     const {userId} = useParams()
-    const {rentaId} = useParams()
+    const {rId} = useParams()
     
-    const getRental = async (rentaId) => {
+    const getRental = async (rId) => {
         try {
             const configs = {
                 method: "GET",
@@ -23,7 +23,8 @@ const EditRental = (props) => {
                   "Authorization": `bearer ${getUserToken()}`,
                 }
             }
-            const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${rentaId}`, configs)
+            const id = props.match.params.rId
+            const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${id}`, configs)
             const parsed = await foundRental.json()
             setInput(parsed)
             setLoading(false)
@@ -33,7 +34,7 @@ const EditRental = (props) => {
         }
     }
 
-    const updateRental = async (rentaId, data) => {
+    const updateRental = async (rId, data) => {
         const configs = {
             method: "PUT",
             body: JSON.stringify(data),
@@ -42,9 +43,9 @@ const EditRental = (props) => {
                 "Authorization": `bearer ${getUserToken()}`,
             },
         }
-        const updateRental = await fetch(`http://localhost:9000/${userId}/renta/${rentaId}`, configs)
+        const updateRental = await fetch(`http://localhost:9000/${userId}/renta/${rId}`, configs)
         const parsed = await updateRental.json()
-        props.history.push(`/${userId}/renta/${rentaId}`)
+        props.history.push(`/${userId}/renta/${rId}`)
     }
 
     useEffect(() =>{

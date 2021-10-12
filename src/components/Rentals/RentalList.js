@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from "react-router-dom"
-import { getUserToken } from "../utils/authToken"
+import { getUserToken } from '../../utils/authToken'
 
 const RentalList = (props) => {
     const [rental, setRental] = useState([])
@@ -64,7 +64,7 @@ const RentalList = (props) => {
                         { rental && rental.map(rentalProperty => (
                             <tr key={ rentalProperty._id }>
                                 <td>{ rentalProperty.name }</td>
-                                <td><Link to={`/renta/${rentalProperty._id}`}>{ rentalProperty.address }</Link></td>
+                                <td><Link to={`/${userId}/renta/${rentalProperty._id}`}>{ rentalProperty.address }</Link></td>
                                 <td onClick={() => handleDelete(rentalProperty._id)}>X</td>
                                 
                             </tr>
@@ -73,7 +73,7 @@ const RentalList = (props) => {
                 </table>
                 <Link to={`/${userId}/renta/new`}>Create New Rental</Link>
                 <br/>
-                <Link to="/">Dismiss</Link>
+                <Link to="/">Logout</Link>
             </div>
         </>
     )

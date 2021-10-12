@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getUserToken } from '../utils/authToken'
+import { getUserToken } from '../../utils/authToken'
 import { useParams } from "react-router-dom"
 
 const RentalDetails = (props) => {
     const [rental, setRental] = useState('')
+    const [tenants, setTenants] = useState([])
     const [loading, setLoading] = useState(true)
     const {userId} = useParams()
-    const {rentaId} = useParams()
+    const {rId} = useParams()
 
     //fetch show
-    const getRental = async(rentaId) => {
+    const getRental = async(rId) => {
         try {
             const configs = {
                 method: "GET",
@@ -20,9 +21,10 @@ const RentalDetails = (props) => {
                   "Authorization": `bearer ${getUserToken()}`,
                 }
               }
-            const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${rentaId}`, configs)
+            const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${rId}`, configs)
             const parsed = await foundRental.json()
             setRental(parsed)
+            setTenants(parsed.tenants)
             setLoading(!loading)
         } catch (err) {
             console.log(err)
@@ -31,7 +33,7 @@ const RentalDetails = (props) => {
     }
 
     useEffect(() => {
-        getRental(rentaId)
+        getRental(rId)
     }, [])
 
     return(
@@ -40,13 +42,21 @@ const RentalDetails = (props) => {
                 loading ? <h3><em>Loading...</em></h3> :
                 <div>
                     <h1>Details for your property</h1>
-                    <p>Name: <strong>{ rental.name }</strong></p>
-                    <p>Address: <strong>{ rental.address }</strong></p>
+                    <p>Name: <strong>{ rental.renta.name }</strong></p>
+                    <p>Address: <strong>{ rental.renta.address }</strong></p>
+                    <p>Current Tenant Count: {tenants.length}</p>
                 </div>
             }
-            <Link to='/renta'>Back</Link>
+            <Link to='/${userId}/renta/'>Back</Link>
             <br/>
-            <Link to={`/renta/${rental._id}/edit`}>Edit</Link>
+            <Link to={`/${userId}/renta/${rId}/edit`}>Edit</Link>
+            <br/>
+            { tenants.length ? (
+                <div>
+                    <Link to={`/${userId}/renta/${rId}/tenant`}>View Tenants</Link>
+                    <Link to={`/${userId}/renta/${rId}/tenant/new`}>Create Tenants</Link>
+                </div>
+            ) : (<Link to={`/${userId}/renta/${rId}/tenant/new`}>Create Tenants</Link>) }
         </>
     )
 }
