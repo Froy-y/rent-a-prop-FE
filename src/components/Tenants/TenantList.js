@@ -4,13 +4,11 @@ import { useParams } from 'react-router-dom'
 
 const TenantList = (props) => {
     const [tenant, setTenant] = useState('')
-    const [rental, setRental] = useState('')
     const { rId } = useParams()
-    const { tId } = useParams()
 
-    const getTenants = async (id) => {
+    const getTenants = async () => {
         try {
-            const allTenants = await fetch(`http://localhost:9000/${id}/tenant`)
+            const allTenants = await fetch(`http://localhost:9000/renta/${rId}/tenant`)
             console.log('all tenants', allTenants)
             const parsed = await allTenants.json()
             console.log('parsed', parsed)
@@ -30,7 +28,7 @@ const TenantList = (props) => {
                 method: 'DELETE'
             }
 
-            const deleteTenant = await fetch(`http://localhost:9000/${rId}/tenant/${id}`, config)
+            const deleteTenant = await fetch(`http://localhost:9000/renta/${rId}/tenant/${id}`, config)
             const parsed = await deleteTenant.json
             const updateTenants = tenant.filter(person => person._id !== parsed._id)
             setTenant(updateTenants)
@@ -52,8 +50,8 @@ const TenantList = (props) => {
                     <tbody>
                         {tenant && tenant.map(person => (
                             <tr key={ person._id }>
-                                <td>{ person.name }</td>
-                                <td>{ person.age }</td>
+                                <td>{ person._id }</td>
+                                <td>{ person.__v }</td>
                                 <td onClick={() => handleDelete(person._id)}>X</td>
                                 <td><Link to={`/renta/${rId}/tenant/${person._id}`}>Show</Link></td>
                             </tr>

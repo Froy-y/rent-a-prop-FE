@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const NewTenant = (props) => {
     const initialState = {
         name: '',
         age: ''
     }
-    const [rental, setRental] = useState('')
     const [input, setInput] = useState(initialState)
+    const { rId } = useParams()
 
     const newTenant = async(data) => {
         try {
@@ -19,9 +20,9 @@ const NewTenant = (props) => {
                 }
             }
 
-            const createdTenant = await fetch('http://localhost:9000/tenant', configs)
+            const createdTenant = await fetch(`http://localhost:9000/renta/${rId}/tenant`, configs)
             const parsed = await createdTenant.json()
-            props.history.push('/tenant')
+            props.history.push(`/renta/${rId}/tenant`)
 
         } catch (err) {
             console.log(err)
@@ -54,7 +55,7 @@ const NewTenant = (props) => {
                         <input type="submit" value="Add a tenant" />
                     </div>
                 </form>
-                <Link to={`/renta/${rental._id}/tenant`}>Back</Link>
+                <Link to={`/renta/${rId}/tenant`}>Back</Link>
                 <br/>
                 <Link to={`/renta/`}>BackIF THAT ONE DONT WORK</Link>
             </div>

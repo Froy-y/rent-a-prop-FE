@@ -22,10 +22,10 @@ const App = () => {
           <Route exact path ='/renta/:rId/edit' render={(routerProps) => <EditRental {...routerProps} /> } />
           <Route exact path ='/renta/:rId' render={(routerProps) => <RentalDetails {...routerProps} /> } />
 
-          <Route exact path ='/:rId/tenant/new' render={(routerProps) => <NewTenant {...routerProps} /> } />
-          <Route exact path ='/:rId/tenant' render={(routerProps) => <TenantList {...routerProps} /> } />
-          <Route exact path ='/:rId/tenant/:tId/edit' render={(routerProps) => <EditTenant {...routerProps} /> } />
-          <Route exact path ='/:rId/tenant/:tId' render={(routerProps) => <TenantDetails {...routerProps} /> } />
+          <Route exact path ='renta/:rId/tenant/new' render={(routerProps) => <NewTenant {...routerProps} /> } />
+          <Route exact path ='renta/:rId/tenant' render={(routerProps) => <TenantList {...routerProps} /> } />
+          <Route exact path ='renta/:rId/tenant/:tId/edit' render={(routerProps) => <EditTenant {...routerProps} /> } />
+          <Route exact path ='renta/:rId/tenant/:tId' render={(routerProps) => <TenantDetails {...routerProps} /> } />
         </Switch>
       </Router>
     </div>

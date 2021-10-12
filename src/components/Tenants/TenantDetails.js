@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const TenantDetail = (props) => {
     const currentId = props.match.params.id
     const [tenant, setTenant] = useState('')
     const [loading, setLoading] = useState(true)
+    const { rId } = useParams()
 
     //fetch show
     const getTenant = async (id) => {
-        const foundTenant = await fetch(`http://localhost:9000/tenant/${id}`)
+        const foundTenant = await fetch(`http://localhost:9000/renta/${rId}/tenant/${id}`)
         const parsed = foundTenant.json()
         setTenant(parsed)
         setLoading(!loading)

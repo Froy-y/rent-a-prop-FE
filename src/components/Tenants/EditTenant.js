@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const EditTenant = (props) => {
     const initialState = {
@@ -8,11 +9,12 @@ const EditTenant = (props) => {
     }
     const [input, setInput] = useState(initialState)
     const [loading, setLoading] = useState(true)
+    const { rId } = useParams()
 
     const getTenant = async (id) => {
         try {
             const id = props.match.params.id
-            const foundTenant = await fetch (`http://localhost:9000/tenant/${id}`)
+            const foundTenant = await fetch (`http://localhost:9000/renta/${rId}/tenant/${id}`)
             const parsed = await foundTenant.json()
             setInput(parsed)
             setLoading(false)
@@ -30,7 +32,7 @@ const EditTenant = (props) => {
                 "Content-Type": "application/json"
             }
         }
-        const updateTenant = await fetch(`http://localhost/tenant/${id}`, configs)
+        const updateTenant = await fetch(`http://localhost/renta/${rId}/tenant/${id}`, configs)
         const parsed = await updateTenant.json()
         props.history.push('/renta')
     }
