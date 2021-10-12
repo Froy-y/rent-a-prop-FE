@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 
 const NewTenant = (props) => {
+    const { rId } = useParams()
     const initialState = {
         name: '',
-        age: ''
+        age: '',
+        renta: rId || ''
     }
     const [input, setInput] = useState(initialState)
-    const { rId } = useParams()
 
     const newTenant = async(data) => {
         try {
@@ -35,8 +36,8 @@ const NewTenant = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setInput(initialState)
         newTenant(input)
+        setInput(initialState)
     }
 
     return(

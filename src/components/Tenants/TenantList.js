@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 const TenantList = (props) => {
     const [tenant, setTenant] = useState('')
     const { rId } = useParams()
+    const { tId } = useParams()
 
     const getTenants = async () => {
         try {
@@ -36,7 +37,6 @@ const TenantList = (props) => {
             console.log(err)   
         }
     }
-    console.log(tenant)
     return(
         <>
             <div>
@@ -60,7 +60,7 @@ const TenantList = (props) => {
                 </table>
                 <Link to={ `/renta/${rId}/tenant/new` }>Create New Tenant</Link>
                 <br />
-                <Link to={ `/renta/` }>Back</Link>
+                <Link to={ `/renta/${rId}` }>Back</Link>
             </div>
         </>
     )
