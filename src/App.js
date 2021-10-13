@@ -19,8 +19,9 @@ import TenantDetails from './components/Tenants/TenantDetails'
 const App = () => {
   return (
     <div className="App">
-      <NavBar />
       <Router>
+        {/* <NavBar /> */}
+        <Route exact path="/*" component= {NavBar} />
         <Switch>
           <Route exact path="/" render={(renderProps)=><LoginForm {...renderProps} />}/>
           <Route exact path="/register" render={(renderProps)=><RegisterForm {...renderProps} />}/>

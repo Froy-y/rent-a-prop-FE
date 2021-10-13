@@ -7,8 +7,8 @@ const RentalDetails = (props) => {
     const [rental, setRental] = useState('')
     const [tenants, setTenants] = useState([])
     const [loading, setLoading] = useState(true)
-    const {userId} = useParams()
-    const {rId} = useParams()
+    const { userId } = useParams()
+    const { rId } = useParams()
 
     //fetch show
     const getRental = async(rId) => {
