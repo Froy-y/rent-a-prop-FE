@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import RegisterForm from './components/Auth/RegisterForm'
 import LoginForm from './components/Auth/LoginForm'
 
+import NavBar from './components/Presentational/NavBar'
+
 import NewRental from './components/Rentals/NewRental'
 import RentalList from './components/Rentals/RentalList'
 import EditRental from './components/Rentals/EditRental'
@@ -17,7 +19,7 @@ import TenantDetails from './components/Tenants/TenantDetails'
 const App = () => {
   return (
     <div className="App">
-      <h1>Hi</h1>
+      <NavBar />
       <Router>
         <Switch>
           <Route exact path="/" render={(renderProps)=><LoginForm {...renderProps} />}/>
