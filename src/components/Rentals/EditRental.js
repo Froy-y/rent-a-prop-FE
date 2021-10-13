@@ -13,7 +13,7 @@ const EditRental = (props) => {
     const {userId} = useParams()
     const {rId} = useParams()
     
-    const getRental = async (rId) => {
+    const getRental = async (id) => {
         try {
             const configs = {
                 method: "GET",
@@ -23,18 +23,17 @@ const EditRental = (props) => {
                   "Authorization": `bearer ${getUserToken()}`,
                 }
             }
-            const id = props.match.params.rId
-            const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${id}`, configs)
+            const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${rId}`, configs)
             const parsed = await foundRental.json()
             setInput(parsed)
             setLoading(false)
         } catch (err) {
             console.log(err)
-            props.history.push('/renta')
+            props.history.push(`/${userId}/renta`)
         }
     }
 
-    const updateRental = async (rId, data) => {
+    const updateRental = async (id, data) => {
         const configs = {
             method: "PUT",
             body: JSON.stringify(data),
@@ -45,7 +44,7 @@ const EditRental = (props) => {
         }
         const updateRental = await fetch(`http://localhost:9000/${userId}/renta/${rId}`, configs)
         const parsed = await updateRental.json()
-        props.history.push(`/${userId}/renta/${rId}`)
+        props.history.push(`/${userId}/renta/${id}`)
     }
 
     useEffect(() =>{
