@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar {
+  background-color: #38587e;
+}
+
+.cursorCard {
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.cardDiv {
+  display: inline-flex;
+}

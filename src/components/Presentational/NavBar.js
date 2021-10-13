@@ -8,7 +8,6 @@ import Nav from 'react-bootstrap/Nav'
 const NavBar = props => {
     return(
         <>
-            <h2>hi</h2>
             <Navbar collapseOnSelect expand="lg" className="navbar" variant="dark">
                 <Container>
                 <Navbar.Brand href="/">Rent-A-Prop</Navbar.Brand>
