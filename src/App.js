@@ -11,16 +11,15 @@ import RentalList from './components/Rentals/RentalList'
 import EditRental from './components/Rentals/EditRental'
 import RentalDetails from './components/Rentals/RentalDetails'
 
-import NewTenant from './components/Tenants/NewTenant'
-import TenantList from './components/Tenants/TenantList'
-import EditTenant from './components/Tenants/EditTenant'
-import TenantDetails from './components/Tenants/TenantDetails'
+import NewTenant from './components/Pages/Tenants/NewTenant'
+import TenantList from './components/Pages/Tenants/TenantList'
+import EditTenant from './components/Pages/Tenants/EditTenant'
+import TenantDetails from './components/Pages/Tenants/TenantDetails'
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <Router>
-        {/* <NavBar /> */}
         <Route exact path="/*" component= {NavBar} />
         <Switch>
           <Route exact path="/" render={(renderProps)=><LoginForm {...renderProps} />}/>

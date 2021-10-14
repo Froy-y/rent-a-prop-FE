@@ -49,36 +49,40 @@ const LoginForm = (props) => {
 
     return(
         <>
-            <div>
-                <h1>Login</h1>
-                <div >
+            <div className="loginPage">
+                <div className="loginContent">
+                    <div className="loginH1">
+                        <h1>Login</h1>
+                    </div>
                     <div>
-                    <form className='text-center' onSubmit={handleSubmit}>
-                        <label htmlFor="user">user: </label>
-                        <br />
-                        <input
-                        id="user"
-                        name="user"
-                        value={input.user}
-                        onChange={handleChange}
-                        />
-                        <br />
-                        <br />
-                        <label htmlFor="password">Password: </label>
-                        <br />
-                        <input
-                        type='password'
-                        id="password"
-                        name="password"
-                        value={input.password}
-                        onChange={handleChange}
-                        />
-                        <br />
-                        <br />
-                        <input type="submit" value="Login" />
-                        <p>Don't have an account?<Link to='/register'> Register</Link></p>
-                    </form>
-                    </div> 
+                        <div>
+                        <form className='text-center loginLabels' onSubmit={handleSubmit}>
+                            <label htmlFor="user">user: </label>
+                            <br />
+                            <input
+                            id="user"
+                            name="user"
+                            value={input.user}
+                            onChange={handleChange}
+                            />
+                            <br />
+                            <br />
+                            <label htmlFor="password">Password: </label>
+                            <br />
+                            <input
+                            type='password'
+                            id="password"
+                            name="password"
+                            value={input.password}
+                            onChange={handleChange}
+                            />
+                            <br />
+                            <br />
+                            <input type="submit" value="Login" />
+                            <p>Don't have an account?<Link to='/register'> Register</Link></p>
+                        </form>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </>

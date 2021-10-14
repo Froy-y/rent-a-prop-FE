@@ -82,14 +82,6 @@ const RentalList = (props) => {
                             </Button>
                         </Card.Body>
                     </Card>
-                    <Offcanvas show={ show } onHide={ handleClose }>
-                        <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>{ property.name }</Offcanvas.Title>
-                        </Offcanvas.Header>
-                        <Offcanvas.Body>
-                        { property.address }
-                        </Offcanvas.Body>
-                    </Offcanvas>
                 </div>
                 ))}
                 <Link to={`/${userId}/renta/new`}>Create New Rental</Link>
