@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from "react-router-dom"
-import { getUserToken } from '../../utils/authToken'
+import { getUserToken } from "../../../utils/authToken"
 import Card from 'react-bootstrap/Card'
 import { useHistory } from "react-router-dom"
 import Button from "react-bootstrap/Button"
-import Offcanvas from "react-bootstrap/Offcanvas"
 
 const RentalList = (props) => {
     const [rental, setRental] = useState([])
@@ -57,15 +56,14 @@ const RentalList = (props) => {
     }
 
     const handleClick = path => history.push(path)
-    const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
     return(
         <>
-            <div>
+            <div className="listContent">
                 { rental && rental.map(property => (
                 <div className="cardDiv">
-                    <Card style={{ width: '18rem' }} onClick={ handleShow } className="cursorCard">
+                    <Card onClick={ handleShow } className="cursorCard">
                         <Card.Body>
                             <Card.Title>{ property.name }</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">{ property.address }</Card.Subtitle>

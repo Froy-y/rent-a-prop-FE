@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { setUserToken, clearUserToken } from '../../utils/authToken'
+import { setUserToken, clearUserToken } from "../../../utils/authToken"
 import { Link } from 'react-router-dom'
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
+import Form from 'react-bootstrap/Form'
 
 const LoginForm = (props) => {
     const initialState = { user: "", password: "" }
@@ -57,27 +59,34 @@ const LoginForm = (props) => {
                     <div>
                         <div>
                         <form className='text-center loginLabels' onSubmit={handleSubmit}>
-                            <label htmlFor="user">user: </label>
-                            <br />
-                            <input
-                            id="user"
-                            name="user"
-                            value={input.user}
-                            onChange={handleChange}
-                            />
-                            <br />
-                            <br />
-                            <label htmlFor="password">Password: </label>
-                            <br />
-                            <input
-                            type='password'
-                            id="password"
-                            name="password"
-                            value={input.password}
-                            onChange={handleChange}
-                            />
-                            <br />
-                            <br />
+                            <FloatingLabel
+                                htmlFor="user"
+                                controlId="floatingInput"
+                                label="Username"
+                                className="mb-3"
+                            >
+                                <Form.Control
+                                type="name"
+                                id="user"
+                                name="user"
+                                value={input.user}
+                                onChange={handleChange} 
+                                placeholder="username" />
+                            </FloatingLabel>
+                            <FloatingLabel 
+                                htmlFor="password"
+                                controlId="floatingPassword" 
+                                label="Password"
+                                className="mb-3"
+                            >
+                                <Form.Control 
+                                type="password" 
+                                id="password"
+                                name="password"
+                                value={input.password}
+                                onChange={handleChange}
+                                placeholder="Password" />
+                            </FloatingLabel>
                             <input type="submit" value="Login" />
                             <p>Don't have an account?<Link to='/register'> Register</Link></p>
                         </form>

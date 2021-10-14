@@ -1,20 +1,24 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import RegisterForm from './components/Auth/RegisterForm'
-import LoginForm from './components/Auth/LoginForm'
+import RegisterForm from './components/Pages/Auth/RegisterForm'
+import LoginForm from './components/Pages/Auth/LoginForm'
 
-import NavBar from './components/Presentational/NavBar'
+import Home from './components/Pages/Present/Home'
+import About from './components/Pages/Present/About'
 
-import NewRental from './components/Rentals/NewRental'
-import RentalList from './components/Rentals/RentalList'
-import EditRental from './components/Rentals/EditRental'
-import RentalDetails from './components/Rentals/RentalDetails'
+import NewRental from './components/Pages/Rentals/NewRental'
+import RentalList from './components/Pages/Rentals/RentalList'
+import EditRental from './components/Pages/Rentals/EditRental'
+import RentalDetails from './components/Pages/Rentals/RentalDetails'
 
 import NewTenant from './components/Pages/Tenants/NewTenant'
 import TenantList from './components/Pages/Tenants/TenantList'
 import EditTenant from './components/Pages/Tenants/EditTenant'
 import TenantDetails from './components/Pages/Tenants/TenantDetails'
+
+import NavBar from './components/Presentational/NavBar'
+
 
 const App = () => {
   return (
@@ -24,6 +28,9 @@ const App = () => {
         <Switch>
           <Route exact path="/" render={(renderProps)=><LoginForm {...renderProps} />}/>
           <Route exact path="/register" render={(renderProps)=><RegisterForm {...renderProps} />}/>
+          
+          <Route exact path="/:userId/home" render={(renderProps)=><Home {...renderProps} />}/>
+          <Route exact path="/:userId/about" render={(renderProps)=><About {...renderProps} />}/>
 
           <Route exact path ='/:userId/renta/new' render={(routerProps) => <NewRental {...routerProps} /> } />
           <Route exact path ='/:userId/renta' render={(routerProps) => <RentalList {...routerProps} /> } />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from "react-router-dom"
-import {getUserToken} from '../../utils/authToken'
+import {getUserToken} from "../../../utils/authToken"
 
 const EditRental = (props) => {
     const initialState = {

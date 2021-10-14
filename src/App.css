@@ -2,31 +2,24 @@
   background-color: #2a465c;
 }
 
-.cursorCard {
-  margin: 0 auto;
-}
-
-.cardDiv {
-  display: inline-flex;
-}
-
 /* login page css :D */
-
 .loginPage {
   background-image: url("./components/Presentational/images/rentaloginpic.jpg");
-  padding-bottom: 20%;
+  padding-bottom: 21.8%;
   padding-top: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   align-self: stretch;
-  color: white;
+  color: rgb(0, 0, 0);
+  width: auto;
 }
 
 .loginH1 {
   margin-bottom: 25%;
   text-align: center;
+  color: white;
 }
 
 .loginLabels {
@@ -35,7 +28,48 @@
 }
 
 /* Register Form */
+.registerPage {
+  background-image: url("./components/Presentational/images/rentaRegister.jpg");
+  padding-top: 10%;
+  padding-bottom: 17.33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: stretch;
+  color: rgb(0, 0, 0);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 881px;
+}
 
+.registerH1 {
+  margin-bottom: 25%;
+  text-align: center;
+  color: white;
+}
+
+.registerLabels {
+  font-size: medium;
+  font-weight: 700;
+  display: flex;
+  flex-flow: column;
+}
+
+/* Renta List */
+.listContent {
+  display: grid;
+  padding: 30px;
+  gap: 40px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 80px;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.cardDiv {
+  border: #2a465c solid 10px;
+}
 
 
 a {

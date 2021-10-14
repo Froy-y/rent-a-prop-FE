@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getUserToken } from '../../utils/authToken'
+import { getUserToken } from "../../../utils/authToken"
 import { useParams } from "react-router-dom"
 
 const NewRental = (props) => {
