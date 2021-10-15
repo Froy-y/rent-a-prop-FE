@@ -24,7 +24,7 @@ const RentalList = (props) => {
                   "Authorization": `bearer ${getUserToken()}`,
                   }
               }
-            const allRentals = await fetch(`http://localhost:9000/${userId}/renta`, configs)
+            const allRentals = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta`, configs)
             console.log(allRentals)
             const parsed = await allRentals.json()
             console.log(parsed)
@@ -46,7 +46,7 @@ const RentalList = (props) => {
                     "Authorization": `bearer ${getUserToken()}`
                 }
             }
-            const deleteRental = await fetch(`http://localhost:9000/${userId}/renta/${rentaId}`, config)
+            const deleteRental = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rentaId}`, config)
             const parsed = await deleteRental.json()
             const updateRental = rental.filter(rentalProperty => rentalProperty._id !== parsed._id)
             setRental(updateRental)

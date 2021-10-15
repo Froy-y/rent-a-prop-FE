@@ -15,7 +15,7 @@ const EditTenant = (props) => {
 
     const getTenant = async (id) => {
         try {
-            const foundTenant = await fetch (`http://localhost:9000/${userId}/renta/${rId}/tenant/${tId}`)
+            const foundTenant = await fetch (`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}/tenant/${tId}`)
             const parsed = await foundTenant.json()
             setInput(parsed)
             setLoading(false)
@@ -33,7 +33,7 @@ const EditTenant = (props) => {
                 "Content-Type": "application/json"
             }
         }
-        const updateTenant = await fetch(`http://localhost:9000/${userId}/renta/${rId}/tenant/${id}`, configs)
+        const updateTenant = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}/tenant/${id}`, configs)
         const parsed = await updateTenant.json()
         props.history.push(`/${userId}/renta/${rId}/tenant/${id}`)
     }

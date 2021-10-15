@@ -23,7 +23,7 @@ const NewRental = (props) => {
                     "Authorization": `bearer ${getUserToken()}`,
                 }
             }
-            const createdRental = await fetch(`http://localhost:9000/${userId}/renta`, configs)
+            const createdRental = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta`, configs)
             const parsed = await createdRental.json()
             props.history.push(`/${userId}/renta`)
         } catch (err) {

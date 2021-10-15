@@ -19,7 +19,7 @@ const LoginForm = (props) => {
                     "Content-Type": "application/json"
                 }
             }
-            const newUser = await fetch('http://localhost:9000/auth/login', config)
+            const newUser = await fetch('https://git.heroku.com/lit-sands-33874.git/auth/login', config)
             const parsed = await newUser.json()
             clearUserToken()
             console.log(parsed)

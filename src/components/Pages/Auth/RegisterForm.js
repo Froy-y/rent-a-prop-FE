@@ -21,7 +21,7 @@ const registerUser = async (data)=> {
         "Authorization": `bearer ${getUserToken()}`,
       }
     }
-    const newUser =  await fetch('http://localhost:9000/auth/register',configs)
+    const newUser =  await fetch('https://git.heroku.com/lit-sands-33874.git/auth/register',configs)
     const parsedUser = await newUser.json()
     console.log("PARSED", parsedUser)
     setUserToken(parsedUser.token)
