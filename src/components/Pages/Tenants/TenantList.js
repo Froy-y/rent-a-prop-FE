@@ -9,7 +9,7 @@ const TenantList = (props) => {
 
     const getTenants = async () => {
         try {
-            const allTenants = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}/tenant`)
+            const allTenants = await fetch(`https://lit-sands-33874.herokuapp.com/${userId}/renta/${rId}/tenant`)
             console.log('all tenants', allTenants)
             const parsed = await allTenants.json()
             console.log('parsed', parsed)
@@ -29,7 +29,7 @@ const TenantList = (props) => {
                 method: 'DELETE'
             }
 
-            const deleteTenant = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}/tenant/${id}`, config)
+            const deleteTenant = await fetch(`https://lit-sands-33874.herokuapp.com/${userId}/renta/${rId}/tenant/${id}`, config)
             const parsed = await deleteTenant.json
             const updateTenants = tenant.filter(person => person._id !== parsed._id)
             setTenant(updateTenants)

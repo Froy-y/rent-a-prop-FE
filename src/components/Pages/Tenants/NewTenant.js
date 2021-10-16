@@ -23,7 +23,7 @@ const NewTenant = (props) => {
                 }
             }
 
-            const createdTenant = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}/tenant`, configs)
+            const createdTenant = await fetch(`https://lit-sands-33874.herokuapp.com/${userId}/renta/${rId}/tenant`, configs)
             const parsed = await createdTenant.json()
             props.history.push(`/${userId}/renta/${rId}/tenant`)
 

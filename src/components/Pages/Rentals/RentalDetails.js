@@ -21,7 +21,7 @@ const RentalDetails = (props) => {
                   "Authorization": `bearer ${getUserToken()}`,
                 }
               }
-            const foundRental = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}`, configs)
+            const foundRental = await fetch(`https://lit-sands-33874.herokuapp.com/${userId}/renta/${rId}`, configs)
             const parsed = await foundRental.json()
             setRental(parsed.renta)
             setTenants(parsed.tenants)

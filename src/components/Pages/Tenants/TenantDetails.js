@@ -11,7 +11,7 @@ const TenantDetail = (props) => {
 
     //fetch show
     const getTenant = async (id) => {
-        const foundTenant = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}/tenant/${id}`)
+        const foundTenant = await fetch(`https://lit-sands-33874.herokuapp.com/${userId}/renta/${rId}/tenant/${id}`)
         const parsed = await foundTenant.json()
         setTenant(parsed)
         setLoading(!loading)

@@ -23,7 +23,7 @@ const EditRental = (props) => {
                   "Authorization": `bearer ${getUserToken()}`,
                 }
             }
-            const foundRental = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}`, configs)
+            const foundRental = await fetch(`https://lit-sands-33874.herokuapp.com/${userId}/renta/${rId}`, configs)
             const parsed = await foundRental.json()
             setInput(parsed.renta)
             setLoading(false)
@@ -42,7 +42,7 @@ const EditRental = (props) => {
                     "Authorization": `bearer ${getUserToken()}`,
                 },
             }
-            const updateRental = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}`, configs)
+            const updateRental = await fetch(`https://lit-sands-33874.herokuapp.com/${userId}/renta/${rId}`, configs)
             const parsed = await updateRental.json()
             props.history.push(`/${userId}/renta/${id}`)
         } catch (err) {
