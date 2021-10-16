@@ -23,7 +23,7 @@ const RentalDetails = (props) => {
               }
             const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${rId}`, configs)
             const parsed = await foundRental.json()
-            setRental(parsed)
+            setRental(parsed.renta)
             setTenants(parsed.tenants)
             setLoading(!loading)
         } catch (err) {
@@ -42,16 +42,16 @@ const RentalDetails = (props) => {
                 loading ? <h3><em>Loading...</em></h3> :
                 <div>
                     <h1>Details for your property</h1>
-                    <p>Name: <strong>{ rental.renta.name }</strong></p>
-                    <p>Address: <strong>{ rental.renta.address }</strong></p>
-                    <p>Current Tenant Count: {tenants.length}</p>
+                    <p>Name: <strong>{ rental.name }</strong></p>
+                    <p>Address: <strong>{ rental.address }</strong></p>
+                    <p>Current Tenant Count: { tenants.length }</p>
                 </div>
             }
             <Link to='/${userId}/renta/'>Back</Link>
             <br/>
             <Link to={`/${userId}/renta/${rId}/edit`}>Edit</Link>
             <br/>
-            { tenants.length ? (
+            { tenants && tenants.length ? (
                 <div>
                     <Link to={`/${userId}/renta/${rId}/tenant`}>View Tenants</Link>
                     <Link to={`/${userId}/renta/${rId}/tenant/new`}>Create Tenants</Link>

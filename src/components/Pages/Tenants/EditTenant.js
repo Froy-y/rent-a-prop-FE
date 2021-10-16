@@ -20,7 +20,6 @@ const EditTenant = (props) => {
             setInput(parsed)
             setLoading(false)
         } catch (err) {
-            console.log(err)
             props.history.push(`/${userId}/renta`)
         }
     }

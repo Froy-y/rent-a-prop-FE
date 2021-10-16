@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 import {getUserToken} from "../../../utils/authToken"
 
 const EditRental = (props) => {
-    console.log(getUserToken())
     const initialState = {
         name: '',
         address: ''
@@ -26,10 +25,9 @@ const EditRental = (props) => {
             }
             const foundRental = await fetch(`http://localhost:9000/${userId}/renta/${rId}`, configs)
             const parsed = await foundRental.json()
-            setInput(parsed)
+            setInput(parsed.renta)
             setLoading(false)
         } catch (err) {
-            console.log(err)
             props.history.push(`/${userId}/renta`)
         }
     }
@@ -52,15 +50,6 @@ const EditRental = (props) => {
         }
     }
 
-    useEffect(() =>{
-        getRental()
-    }, [])
-
-
-    const handleChange = (e) => {
-        setInput({...input, [e.target.name]: e.target.value})
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         const { name, address } = input
@@ -68,6 +57,14 @@ const EditRental = (props) => {
         updateRental(input._id, rentalData)
     }
 
+    const handleChange = (e) => {
+        setInput({...input, [e.target.name]: e.target.value})
+    }
+
+
+    useEffect(() =>{
+        getRental()
+    }, [])
 
     return(
         <>

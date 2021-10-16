@@ -10,9 +10,7 @@ const TenantList = (props) => {
     const getTenants = async () => {
         try {
             const allTenants = await fetch(`http://localhost:9000/${userId}/renta/${rId}/tenant`)
-            console.log('all tenants', allTenants)
             const parsed = await allTenants.json()
-            console.log('parsed', parsed)
             setTenant(parsed)
         } catch (err) {
             console.log(err)

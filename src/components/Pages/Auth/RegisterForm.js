@@ -23,14 +23,12 @@ const registerUser = async (data)=> {
     }
     const newUser =  await fetch('http://localhost:9000/auth/register',configs)
     const parsedUser = await newUser.json()
-    console.log("PARSED", parsedUser)
     setUserToken(parsedUser.token)
     setCurrentUser(parsedUser.user)
     setIsAuthenticated(parsedUser.isLoggedIn)
     return parsedUser 
 
   } catch(err){
-    console.log("parsed a no go", err)
     clearUserToken()
     setIsAuthenticated(false)
   }
@@ -40,7 +38,6 @@ const registerUser = async (data)=> {
     e.preventDefault()
     if (input.password === input.password2) {
       const createdUserToken = await registerUser(input)
-      console.log(createdUserToken)
       if (createdUserToken) {
         const user_id = createdUserToken.user._id
         props.history.push(`/${user_id}/renta`)

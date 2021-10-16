@@ -15,7 +15,6 @@ const RentalList = (props) => {
     //fetch for index
     const getRentals = async () => {
         try {
-            console.log(getUserToken())
             const configs = {
                 method: "GET",
                 body: JSON.stringify(),
@@ -25,9 +24,7 @@ const RentalList = (props) => {
                   }
               }
             const allRentals = await fetch(`http://localhost:9000/${userId}/renta`, configs)
-            console.log(allRentals)
             const parsed = await allRentals.json()
-            console.log(parsed)
             setRental(parsed)
         } catch (err) {
             console.log(err)

@@ -4,7 +4,6 @@ import { getUserToken } from "../../../utils/authToken"
 import { useParams } from "react-router-dom"
 
 const NewRental = (props) => {
-    console.log("the token", getUserToken)
     const initialState = {
         name: '',
         address: ''
