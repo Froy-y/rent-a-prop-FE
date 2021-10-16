@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import {getUserToken} from "../../../utils/authToken"
 
 const EditRental = (props) => {
+    console.log(getUserToken())
     const initialState = {
         name: '',
         address: ''
@@ -34,17 +35,21 @@ const EditRental = (props) => {
     }
 
     const updateRental = async (id, data) => {
-        const configs = {
-            method: "PUT",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `bearer ${getUserToken()}`,
-            },
+        try {
+            const configs = {
+                method: "PUT",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `bearer ${getUserToken()}`,
+                },
+            }
+            const updateRental = await fetch(`http://localhost:9000/${userId}/renta/${rId}`, configs)
+            const parsed = await updateRental.json()
+            props.history.push(`/${userId}/renta/${id}`)
+        } catch (err) {
+            console.log(err)
         }
-        const updateRental = await fetch(`http://localhost:9000/${userId}/renta/${rId}`, configs)
-        const parsed = await updateRental.json()
-        props.history.push(`/${userId}/renta/${id}`)
     }
 
     useEffect(() =>{
