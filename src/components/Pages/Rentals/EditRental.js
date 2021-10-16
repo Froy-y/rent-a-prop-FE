@@ -25,35 +25,29 @@ const EditRental = (props) => {
             }
             const foundRental = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}`, configs)
             const parsed = await foundRental.json()
-            setInput(parsed)
+            setInput(parsed.renta)
             setLoading(false)
         } catch (err) {
-            console.log(err)
             props.history.push(`/${userId}/renta`)
         }
     }
 
     const updateRental = async (id, data) => {
-        const configs = {
-            method: "PUT",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `bearer ${getUserToken()}`,
-            },
+        try {
+            const configs = {
+                method: "PUT",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `bearer ${getUserToken()}`,
+                },
+            }
+            const updateRental = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}`, configs)
+            const parsed = await updateRental.json()
+            props.history.push(`/${userId}/renta/${id}`)
+        } catch (err) {
+            console.log(err)
         }
-        const updateRental = await fetch(`https://git.heroku.com/lit-sands-33874.git/${userId}/renta/${rId}`, configs)
-        const parsed = await updateRental.json()
-        props.history.push(`/${userId}/renta/${id}`)
-    }
-
-    useEffect(() =>{
-        getRental()
-    }, [])
-
-
-    const handleChange = (e) => {
-        setInput({...input, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = async (e) => {
@@ -63,6 +57,14 @@ const EditRental = (props) => {
         updateRental(input._id, rentalData)
     }
 
+    const handleChange = (e) => {
+        setInput({...input, [e.target.name]: e.target.value})
+    }
+
+
+    useEffect(() =>{
+        getRental()
+    }, [])
 
     return(
         <>
