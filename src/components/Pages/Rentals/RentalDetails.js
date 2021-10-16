@@ -47,7 +47,7 @@ const RentalDetails = (props) => {
                     <p>Current Tenant Count: { tenants.length }</p>
                 </div>
             }
-            <Link to='/${userId}/renta/'>Back</Link>
+            <Link to={`/${userId}/renta/`}>Back</Link>
             <br/>
             <Link to={`/${userId}/renta/${rId}/edit`}>Edit</Link>
             <br/>
