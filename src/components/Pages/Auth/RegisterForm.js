@@ -110,7 +110,7 @@ const registerUser = async (data)=> {
             </FloatingLabel>
 
             <input type="submit" value="Register" />
-            <p >Already have an account?<Link to='/'> Log in</Link></p>
+            <p >Already have an account?<Link to='/login'> Log in</Link></p>
           </form>
         </div>
       </div>

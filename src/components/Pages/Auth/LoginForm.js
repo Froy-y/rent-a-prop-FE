@@ -39,7 +39,7 @@ const LoginForm = (props) => {
         if (createdUserToken) {
             props.history.push(`/${user_id}/renta`)
         } else {
-            props.history.push("/")
+            props.history.push("/login")
         }
         setInput(initialState)
     }

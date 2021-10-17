@@ -13,34 +13,47 @@ const NavBar = props => {
         <>
             <Navbar collapseOnSelect expand="lg" className="navbar" variant="dark">
                 <Container fluid>
-                <Navbar.Brand href="#">Rent-A-Prop</Navbar.Brand>
+                <Navbar.Brand href="/">Rent-A-Prop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     {
-                        (path === '/') ? (
-                            <Nav className="ms-auto">
-                            <Nav.Link eventKey={2} href="/register">Register</Nav.Link>
-                            </Nav>
+                        (path === '/login') ? (
+                            <>
+                                <Nav className="me-auto">
+                                    <Nav.Link href="/">Home</Nav.Link>
+                                    <Nav.Link href="/about">About</Nav.Link>
+                                </Nav>
+                                <Nav className="ms-auto">
+                                    <Nav.Link eventKey={2} href="/register">Register</Nav.Link>
+                                </Nav>
+                            </>
                         ) : (path === '/register') ? (
                             <>
+                                <Nav className="me-auto">
+                                    <Nav.Link href="/">Home</Nav.Link>
+                                </Nav>
                                 <Nav className="ms-auto">
-                                <Nav.Link href="/">Login</Nav.Link>
+                                    <Nav.Link href="/login">Login</Nav.Link>
+                                </Nav>
+                            </>
+                        ) : (path === '/' || path === '/about') ? (
+                            <>
+                                <Nav className="me-auto">
+                                    <Nav.Link href="/">Home</Nav.Link>
+                                </Nav>
+                                <Nav className="ms-auto">
+                                    <Nav.Link href="/login">Login</Nav.Link>
+                                    <Nav.Link eventKey={2} href="/register">Register</Nav.Link>
                                 </Nav>
                             </>
                         ) : (
                             <>
                                 <Nav className="me-auto">
-                                <Nav.Link href="#">Home</Nav.Link>
-                                <Nav.Link href="#pricing">Pricing</Nav.Link>
-                                <NavDropdown title="Rental Properties" id="collasible-nav-dropdown">
-                                    <NavDropdown.Item href={`/${userId}/renta/`}>View your Properties!</NavDropdown.Item>
-                                    <NavDropdown.Item href={`/${userId}/renta/new`}>Add a Property!</NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                                </NavDropdown>
+                                    <Nav.Link href={`/${userId}/renta/`}>View your Properties!</Nav.Link>
+                                    <Nav.Link href={`/${userId}/renta/new`}>Add a Property!</Nav.Link>
                                 </Nav>
                                 <Nav>
-                                <Nav.Link eventKey={2} href="/">Logout</Nav.Link>
+                                    <Nav.Link eventKey={2} href="/login">Logout</Nav.Link>
                                 </Nav>
                             </>
                         )

@@ -57,32 +57,46 @@ const RentalList = (props) => {
 
     return(
         <>
+            <div className="rentalListH1">
+                <h1>Welcome! You currently have { rental.length } properties!</h1>
+            </div>
             <div className="listContent">
                 { rental && rental.map(property => (
                 <div className="cardDiv">
-                    <Card onClick={ handleShow } className="cursorCard">
+                    <Card onClick={ handleShow } className="rentaListCard">
                         <Card.Body>
                             <Card.Title>{ property.name }</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">{ property.address }</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-white"><i>{ property.address }</i></Card.Subtitle>
                             <Card.Text>
                             Some quick example text to build on the card title and make up the bulk of
                             the card's content.
                             </Card.Text>
                             <Button 
-                            variant="primary"
-                            size="lg"
-                            onClick={() => handleClick(`/${userId}/renta/${property._id}`)}
+                                variant="light"
+                                onClick={() => handleClick(`/${userId}/renta/${property._id}`)}
                             >
                             View
+                            </Button>
+                            <Button
+                                className="deleteButton"
+                                variant="danger"
+                                onClick={() => handleDelete(property._id)}
+                            >
+                            Delete
                             </Button>
                         </Card.Body>
                     </Card>
                 </div>
                 ))}
-                <Link to={`/${userId}/renta/new`}>Create New Rental</Link>
                 <br/>
-                <Link to={`/${userId}/home`}>Back</Link>
             </div>
+            <Button
+                    className="createRentaBtn"
+                    variant="secondary"
+                    onClick={() => handleClick(`/${userId}/renta/new`)}
+                >
+                Create New Rental
+            </Button>
         </>
     )
 }
