@@ -26,12 +26,12 @@ const App = () => {
       <Router>
         <Route exact path="/*" component= {NavBar} />
         <Switch>
-          <Route exact path="/" render={(renderProps)=><LoginForm {...renderProps} />}/>
+          <Route exact path="/" render={(renderProps)=><Home {...renderProps} />}/>
+          <Route exact path="/about" render={(renderProps)=><About {...renderProps} />}/>
+
+          <Route exact path="/login" render={(renderProps)=><LoginForm {...renderProps} />}/>
           <Route exact path="/register" render={(renderProps)=><RegisterForm {...renderProps} />}/>
           
-          <Route exact path="/:userId/home" render={(renderProps)=><Home {...renderProps} />}/>
-          <Route exact path="/:userId/about" render={(renderProps)=><About {...renderProps} />}/>
-
           <Route exact path ='/:userId/renta/new' render={(routerProps) => <NewRental {...routerProps} /> } />
           <Route exact path ='/:userId/renta' render={(routerProps) => <RentalList {...routerProps} /> } />
           <Route exact path ='/:userId/renta/:rId/edit' render={(routerProps) => <EditRental {...routerProps} /> } />

@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import { useHistory } from "react-router-dom"
+import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
 
 const EditTenant = (props) => {
     const initialState = {
@@ -9,6 +15,7 @@ const EditTenant = (props) => {
     }
     const [input, setInput] = useState(initialState)
     const [loading, setLoading] = useState(true)
+    const history = useHistory()
     const { rId } = useParams()
     const { tId } = useParams()
     const { userId } = useParams()
@@ -20,7 +27,6 @@ const EditTenant = (props) => {
             setInput(parsed)
             setLoading(false)
         } catch (err) {
-            console.log(err)
             props.history.push(`/${userId}/renta`)
         }
     }
@@ -53,25 +59,82 @@ const EditTenant = (props) => {
         updateTenant(input._id, tenantData)
     }
 
+    const handleClick = path => history.push(path)
+
     return(
         <>
             {
-                loading ? <h3><em>Loading ...</em></h3> :
-                <form onSubmit={ handleSubmit }>
-                    <div>
-                        <label htmlFor="name">Name</label>
-                        <input id="name" name="name" value={ input.name } onChange={ handleChange } />
+                loading ? <h3>Loading...</h3> :
+                <>
+                    <div className="detailsHeader">
+                        <h1>Edit your tenant!!!</h1>
                     </div>
                     <div>
-                        <label htmlFor="age">age</label>
-                        <input id="age" name="age" value={ input.age } onChange={ handleChange } />
+                        <Card className="detailsCard">
+                            <Card.Body>
+                                <Form onSubmit={ handleSubmit }>
+                                    <Row className="mb-3">
+                                        <Form.Group as={Col} controlId="formGridEmail">
+                                        <Form.Label htmlFor="name">Name</Form.Label>
+                                        <Form.Control placeholder="Enter Name" id="name" name="name" value={ input.name } onChange={ handleChange }/>
+                                        </Form.Group>
+
+                                        <Form.Group as={Col} controlId="formGridPassword">
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control type="password" placeholder="Password" readOnly/>
+                                        </Form.Group>
+                                    </Row>
+
+                                    <Form.Group className="mb-3" controlId="formGridAge">
+                                        <Form.Label htmlFor="age">Age</Form.Label>
+                                        <Form.Control placeholder="1+1=21" id="age" name="age" value={ input.age } onChange={ handleChange }/>
+                                    </Form.Group>
+
+                                    <Form.Group className="mb-3" controlId="formGridAddress2">
+                                        <Form.Label>Address 2</Form.Label>
+                                        <Form.Control placeholder="Apartment, studio, or floor" readOnly/>
+                                    </Form.Group>
+
+                                    <Row className="mb-3">
+                                        <Form.Group as={Col} controlId="formGridCity">
+                                        <Form.Label>City</Form.Label>
+                                        <Form.Control readOnly/>
+                                        </Form.Group>
+
+                                        {/* <Form.Group as={Col} controlId="formGridState">
+                                        <Form.Label>State</Form.Label>
+                                        <Form.Select defaultValue="Choose...">
+                                            <option>Choose...</option>
+                                            <option>...</option>
+                                        </Form.Select>
+                                        </Form.Group> */}
+
+                                        <Form.Group as={Col} controlId="formGridZip">
+                                        <Form.Label>Zip</Form.Label>
+                                        <Form.Control readOnly />
+                                        </Form.Group>
+                                    </Row>
+
+                                    <Form.Group className="mb-3" id="formGridCheckbox">
+                                        <Form.Check type="null" label="Check me out"/>
+                                    </Form.Group>
+
+                                    <Button variant="light" type="submit">
+                                        Submit
+                                    </Button>
+                                </Form>
+                            </Card.Body>
+                        </Card>    
                     </div>
-                    <div>
-                        <input type="submit" value="Edit Tenant" />
-                    </div>
-                </form>
+                    <Button
+                            className="createRentaBtn"
+                            variant="secondary"
+                            onClick={() => handleClick(`/${userId}/renta/${rId}/tenant`)}
+                        >
+                        Back
+                    </Button>
+                </>
             }
-            <Link to={`/${userId}/renta/`}>Back</Link>
         </>
     )
 }

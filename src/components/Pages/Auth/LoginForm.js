@@ -22,7 +22,6 @@ const LoginForm = (props) => {
             const newUser = await fetch('https://lit-sands-33874.herokuapp.com/auth/login', config)
             const parsed = await newUser.json()
             clearUserToken()
-            console.log(parsed)
             setUserToken(parsed.token)
             setCurrentUser(parsed.user)
             setIsAuthenticated(parsed.isLoggedIn)
@@ -40,7 +39,7 @@ const LoginForm = (props) => {
         if (createdUserToken) {
             props.history.push(`/${user_id}/renta`)
         } else {
-            props.history.push("/")
+            props.history.push("/login")
         }
         setInput(initialState)
     }

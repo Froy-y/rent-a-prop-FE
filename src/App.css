@@ -1,5 +1,17 @@
 .navbar {
   background-color: #2a465c;
+  box-shadow: 0 3px 5px -3px rgba(0,0,0,.9);
+}
+
+a {
+  color: #FFF;
+}
+a:hover {
+   color: black;
+}
+
+img {
+  margin-right: 10px;
 }
 
 /* login page css :D */
@@ -56,25 +68,73 @@
   flex-flow: column;
 }
 
+/* Home Page */
+.homePage {
+  background-image: url('./components/Presentational/images/homePage.jpg');
+  padding-top: 10%;
+  padding-bottom: 17.33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: rgb(0, 0, 0);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 881px;
+  font-size: 35px;
+  color: white;
+}
+
+.homeContentCard {
+  background-color: rgb(255, 255, 255, 20%);
+  display: inline-flex;
+  margin-left: 1175px;
+  margin-right: 2px;
+  top: 135px;
+}
+
+
 /* Renta List */
+.rentalListH1 {
+  margin-top: 25px;
+  color: white;
+  text-align: center;
+}
+
 .listContent {
   display: grid;
   padding: 30px;
   gap: 40px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-top: 80px;
+  margin-top: 20px;
   justify-content: center;
   align-items: flex-end;
+  color: white;
 }
 
-.cardDiv {
-  border: #2a465c solid 10px;
+.rentaListCard {
+  background-color: rgb(255, 255, 255, 35%);
 }
 
-
-a {
-  color: #FFF;
+.createRentaBtn {
+  margin-left: 30px;
 }
-a:hover {
-   color: black;
+
+/* Details Page */
+.detailsHeader {
+  margin-top: 25px;
+  margin-bottom: 50px;
+  color: white;
+  text-align: center;
+}
+
+.detailsCard {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-left: auto;
+	margin-right: auto;
+  width: 30%;
+  background-color: rgb(255, 255, 255, 35%);
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
