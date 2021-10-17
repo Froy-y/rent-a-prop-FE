@@ -10,6 +10,10 @@ a:hover {
    color: black;
 }
 
+img {
+  margin-right: 10px;
+}
+
 /* login page css :D */
 .loginPage {
   background-image: url("./components/Presentational/images/rentaloginpic.jpg");
