@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+## Rent-A-Prop!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Rent-A-Prop is a full stack MERN application that was created for anyone who owns rental properties and wants to keep track of it's tenants along with more features to be added like income tracker and more specific details about the rental properites and tenants. Although this project is still in early development, expanding and elaborating on this project will be happening very soon.
 
-## Available Scripts
+<!-- PROJECT LOGO -->
+<br />
+<div align="center" id="top">
+    <img src="/src/components/Presentational/images/logo.png" alt="Logo">
+</div>
 
-In the project directory, you can run:
+## User Stories
 
-### `yarn start`
+- Every user can create both Rental properties AND tenants that live ONLY in that property
+- User is able to make a secure account and login in with it
+- Users can delete along with edit their rental properties / tenants if they have to with no problems
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### PLANNING >>>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Wireframe / Planning
+![Rent-A-Prop WireFrame](./src/components/Presentational/images/wirefram-rent.png)
 
-### `yarn test`
+### >>> NOW
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+List page of rental properties!
+![Rent-A-Prop Home Page](./src/components/Presentational/images/renta-listpage.png)
 
-### `yarn build`
+<!-- Proud Code -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Proud Code
+This Code snippet shows how my navbar switches between nav items depending on the url the user is currently in. This might not be the craziest piece of code but I am still proud of it!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+   return (
+    <>
+      {
+                            (path === '/login') ? (
+                                <>
+                                    <Nav className="me-auto">
+                                        <Nav.Link href="/">Home</Nav.Link>
+                                        <Nav.Link href="/about">About</Nav.Link>
+                                    </Nav>
+                                    <Nav className="ms-auto">
+                                        <Nav.Link eventKey={2} href="/register">Register</Nav.Link>
+                                    </Nav>
+                                </>
+                            ) : (path === '/register') ? (
+                                <>
+                                    <Nav className="me-auto">
+                                        <Nav.Link href="/">Home</Nav.Link>
+                                    </Nav>
+                                    <Nav className="ms-auto">
+                                        <Nav.Link href="/login">Login</Nav.Link>
+                                    </Nav>
+                                </>
+                            ) : (path === '/' || path === '/about') ? (
+                                <>
+                                    <Nav className="me-auto">
+                                        <Nav.Link href="/">Home</Nav.Link>
+                                    </Nav>
+                                    <Nav className="ms-auto">
+                                        <Nav.Link href="/login">Login</Nav.Link>
+                                        <Nav.Link eventKey={2} href="/register">Register</Nav.Link>
+                                    </Nav>
+                                </>
+                            ) : (
+                                <>
+                                    <Nav className="me-auto">
+                                        <Nav.Link href={`/${userId}/renta/`}>View your Properties!</Nav.Link>
+                                        <Nav.Link href={`/${userId}/renta/new`}>Add a Property!</Nav.Link>
+                                    </Nav>
+                                    <Nav>
+                                        <Nav.Link eventKey={2} href="/login">Logout</Nav.Link>
+                                    </Nav>
+                                </>
+                            )
+                        }
+    </>
+```
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- ROADMAP -->
 
-### `yarn eject`
+## OLYMPIC HURDLES
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Auth was some what of a challenge in this project but we got it done and have a good understanding of it!
+- Displaying varibales for my second model because it had to reach deeper into the model for it
+- Image upload which I did not incoporate in this repo but am still working on!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<!-- Technologies Used -->
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Technologies Used:
 
-## Learn More
+This is a project utilizes the following technologies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- MongoDB
+- Mongoose
+- Express
+- React.js
+- React Bootstrap
+- Dotenv
+- jsonwebtoken
+- passport
+- passport-jwt
+- Surge
+- Heroku
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### Code Splitting
+#### How to install packages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+In your terminal, run:
 
-### Analyzing the Bundle Size
+```
+git clone https://github.com/Froy-y/rent-a-prop-FE.git
+cd rent-a-prop-FE
+npm i
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Verify these have been installed by checking your package.json file.
 
-### Making a Progressive Web App
+- react-bootstrap
+- react-router-dom
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+And do the same for these dependencies in your backend folder:
 
-### Advanced Configuration
+- bcrypt
+- cors
+- dotenv
+- express
+- jsonwebtoken
+- method-override
+- mongoose
+- passport
+- passport-jwt
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### Deployment
+<!-- CONTACT -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contact
 
-### `yarn build` fails to minify
+Feel free to reach out at any time!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [LinkedIn](https://www.https://www.linkedin.com/in/froy-/)
+- [GitHub](https://https://github.com/Froy-y)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
