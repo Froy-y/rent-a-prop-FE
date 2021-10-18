@@ -147,5 +147,3 @@ Feel free to reach out at any time!
 - [GitHub](https://https://github.com/Froy-y)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-<p align="right">(<a href="#top">back to top</a>)</p>
