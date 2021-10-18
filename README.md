@@ -22,7 +22,7 @@ Wireframe / Planning
 ### >>> NOW
 
 List page of rental properties!
-![Rent-A-Prop Home Page](./src/components/Presentational/images/renta-listpage.png)
+![Rent-A-Prop Home Page](./src/components/Presentational/images/renta-listpage.PNG)
 
 <!-- Proud Code -->
 
