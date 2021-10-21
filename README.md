@@ -8,6 +8,9 @@ Rent-A-Prop is a full stack MERN application that was created for anyone who own
     <img src="/src/components/Presentational/images/logo.png" alt="Logo">
 </div>
 
+## Link to site
+https://rent-a-prop.surge.sh/
+
 ## User Stories
 
 - Every user can create both Rental properties AND tenants that live ONLY in that property
